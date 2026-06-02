@@ -1,10 +1,8 @@
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: #e2e8f0;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace; /* Fonte técnica */
+  background-color: #0b0f19; /* Um azul escuro profundo quase preto, mantendo sua paleta */
+  color: #e2e8f0; /* Texto claro confortável */
 }
-
 .container {
   max-width: 900px;
   margin: auto;
@@ -13,27 +11,39 @@ body {
 /* HERO */
 
 .hero {
-  text-align: center;
-  padding: 60px 20px;
+  text-align: left;
+  max-width: 800px; /* Evita que o texto estique na tela toda */
+  margin: 60px auto 40px auto; /* Centraliza o bloco na tela, mas o texto fica alinhado à esquerda */
+  padding: 0 20px;
 }
 
 .hero h1 {
-  font-size: 32px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  margin-bottom: 20px;
 }
 
 .hero p {
-  color: #94a3b8;
-  margin: 10px 0 20px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #94a3b8; /* Texto secundário levemente acinzentado para dar contraste */
 }
 
 .cta {
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  cursor: pointer;
-  border-radius: 999px;
+  display: inline-block;
+  background-color: #2563eb; /* Azul sólido */
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 4px; /* Bordas quase retas, muito mais sério */
   text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.cta:hover {
+  background-color: #1d4ed8;
 }
 
 .cta.outline {
@@ -51,17 +61,25 @@ body {
 }
 
 .info-grid {
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin: 0 20px;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 20px;
+}
+
+.info-grid h2 {
+  color: #3b82f6; /* Destaque azul para os títulos internos */
+  margin-bottom: 15px;
+  font-size: 1.4rem;
 }
 
 .info-grid article {
-  background: #0f172a;
-  padding: 18px;
-  border: 1px solid #334155;
-  border-radius: 12px;
+  background: #111827; /* Fundo sutil */
+  border: 1px solid #1f2937; /* Borda fina e discreta */
+  border-radius: 6px;
+  padding: 30px;
 }
 
 .contact-form {
@@ -257,4 +275,92 @@ body {
 .footerCta {
   text-align: center;
   padding: 50px 20px;
+}
+
+/* CONTAINER E ÁREA DE MENSAGENS (Substituindo o antigo chatBody) */
+.whatsapp-container {
+  min-height: 320px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 14px;
+  background: #e5ddd5; /* Fundo clássico cinza/bege do WhatsApp */
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Forçar os parágrafos dentro dos balões a não herdarem margens do h1/p global */
+.message-balloon p, 
+.message-balloon span {
+  margin: 0;
+  padding: 0;
+  white-space: pre-line;
+}
+
+/* BALÃO DO CLIENTE (Alinhado à direita, fundo verde claro, texto escuro) */
+.message-balloon.cliente {
+  background: #dcf8c6;
+  border-radius: 8px;
+  align-self: flex-end;
+  color: #111b21; /* Texto escuro do WhatsApp */
+}
+
+/* BALÃO DO BOT (Alinhado à esquerda, fundo branco, texto escuro) */
+.message-balloon.bot {
+  background: #ffffff;
+  border-radius: 8px;
+  align-self: flex-start;
+  color: #111b21; /* Texto escuro do WhatsApp */
+}
+
+/* ESTILO PARA O INDICADOR "DIGITANDO..." */
+.message-balloon.digitando span {
+  color: #667781; /* Cinza sutil para o status */
+  font-style: italic;
+  font-size: 13px;
+}
+
+/* RESPONSIVIDADE (Celulares e Tablets) */
+@media (max-width: 768px) {
+  
+  /* 1. Faz a grid de informações virar uma coluna única */
+  .info-grid {
+    grid-template-columns: 1fr; /* Empilha os cards */
+    gap: 16px;
+    padding: 16px;
+  }
+
+  /* 2. Ajusta o tamanho da fonte do Hero para não ficar gigante no celular */
+  .hero h1 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* 3. Garante que o Hero tenha um espaçamento seguro nas bordas */
+  .hero {
+    margin: 30px auto 20px auto;
+    padding: 0 16px;
+  }
+
+  /* 4. Faz os cards internos usarem melhor o espaço */
+  .info-grid article {
+    padding: 20px;
+  }
+
+  /* 5. Alinha os botões ou links caso fiquem estranhos */
+  .hero-links {
+    justify-content: flex-start;
+    width: 100%;
+  }
 }
