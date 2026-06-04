@@ -72,31 +72,16 @@ export default function ChatWhatsapp() {
         </div>
 
         <div className="whatsapp-container">
-        {/* Render das mensagens que já entraram no estado */}
-        <div className="chat-messages">
-          {mensagensVisiveis.map((msg) => (
-            <div key={msg.id} className={`message-balloon ${msg.remetente}`}>
-              <p>{msg.texto}</p>
-            </div>
-          ))}
-          
-          
-        </div>
-      </div>
-
-      <div className="video-container" style={{ marginTop: '20px', padding: '0 10px' }}>
-          <video 
-            src="/mdpx2_comp.mp4" // Se estiver na pasta public, use ex: "/videos/demo.mp4"
-            controls 
-            width="100%" 
-            style={{ borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}
-            preload="metadata"
-          >
-            Seu navegador não suporta o elemento de vídeo.
-          </video>
+          <div className="chat-messages">
+            {mensagensVisiveis.map((msg) => (
+              <div key={msg.id} className={`message-balloon ${msg.remetente}`}>
+                <p style={{ whiteSpace: 'pre-line' }}>{msg.texto}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
       </div>
     </div>
-  )
+  );
 }

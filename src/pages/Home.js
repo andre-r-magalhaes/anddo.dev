@@ -33,16 +33,27 @@ export default function Home() {
 
       <section className="demo">
         <h2>Caso de Uso: Exemplo de Atendimento Inteligente de Varejo (Pisos e Revestimentos)</h2>
+        
+        {/* O simulador do celular */}
         <ChatWhatsapp />
-      </section>
 
-      <section className="hero">
-        <div className="hero-links">
-          <a className="cta" href="mailto:contato@anddo.dev">Fale conosco</a>
+        {/* O vídeo centralizado abaixo */}
+        <div className="video-container">
+          <video 
+            src="/mdpx2_comp.mp4" 
+            controls 
+            width="100%" 
+            preload="metadata"
+          >
+            Seu navegador não suporta o elemento de vídeo.
+          </video>
         </div>
       </section>
 
+      <footer style={{ textAlign: 'center', padding: '0px 0 20px 0', color: '#475569', fontSize: '14px' }}>
+        <p>&copy; {new Date().getFullYear()} anddo.dev. Todos os direitos reservados.</p>
+      </footer>
+
     </SiteLayout>
-    
   )
 }
