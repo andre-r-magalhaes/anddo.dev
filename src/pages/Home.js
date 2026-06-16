@@ -1,38 +1,53 @@
 // src/pages/Home.js
 
-import React from "react"
+import React, { useState, useEffect } from "react"
 import SiteLayout from "../layouts/SiteLayout"
 import ChatWhatsapp from "../components/ChatWhatsapp"
+import { homeContent } from "../locales/homeContent"
 
 export default function Home() {
+
+  const [lang, setLang] = useState("pt")
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userLang = navigator.language || navigator.userLanguage
+      if (userLang && !userLang.startsWith("pt")) {
+        setLang("en")
+      }
+    }
+  }, [])
+
+  const content = homeContent[lang]
+
   return (
     <SiteLayout>
 
       <section className="hero">
-        <h1>anddo.dev // Engenharia de IA & Automação</h1>
+        <h1>{content.title}</h1>
         <p>
-          Desenvolvimento de agentes inteligentes assíncronos e integrados nativamente à Cloud. Implementamos fluxos de atendimento via WhatsApp (WABA Oficial) utilizando abordagens stateless de alta performance, RAG para recuperação de contexto e Tool Calling para integração com sistemas legados, estoques e CRMs.
+          {content.hero}
         </p>
 
         <div className="hero-links">
-          <a className="cta" href="mailto:contato@anddo.dev">Fale conosco</a>
+          <a className="cta" href="mailto:contato@anddo.dev">{content.cta}</a>
         </div>
       </section>
 
       <section className="info-grid">
         <article>
-          <h2>Arquitetura Cloud-Native</h2>
-          <p>Soluções Serverless, garantindo custo computacional sob demanda e escalabilidade linear. Persistência de contexto ultraveloz em e orquestração inteligente de tokens para viabilidade financeira do projeto.</p>
+          <h2>{content.card1Title}</h2>
+          <p>{content.card1Text}</p>
         </article>
         <article>
           <h2>Contato</h2>
           <p>Email: contato@anddo.dev</p>
-          <p>Localização: São Paulo, SP</p>
+          <p>{content.card2Loc}</p>
         </article>
       </section>
 
       <section className="demo">
-        <h2>Caso de Uso: Exemplo de Atendimento Inteligente de Varejo (Pisos e Revestimentos)</h2>
+        <h2>{content.demoTitle}</h2>
         
         {/* O simulador do celular */}
         <ChatWhatsapp />
@@ -45,13 +60,13 @@ export default function Home() {
             width="100%" 
             preload="metadata"
           >
-            Seu navegador não suporta o elemento de vídeo.
+            {content.videoError}
           </video>
         </div>
       </section>
 
       <footer style={{ textAlign: 'center', padding: '0px 0 20px 0', color: '#475569', fontSize: '14px' }}>
-        <p>&copy; {new Date().getFullYear()} anddo.dev. Todos os direitos reservados.</p>
+        <p>&copy; {new Date().getFullYear()} anddo.dev. {content.rights}</p>
       </footer>
 
     </SiteLayout>
